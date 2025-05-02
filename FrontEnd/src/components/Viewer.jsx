@@ -17,30 +17,41 @@ const ModelItem = ({ url }) => {
 
 const Viewer = () => {
   const [models, setModels] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
     async function fetchData() {
       const res = await getModels();
       setModels(res.data);
+      setLoading(false); // Set loading to false after data is fetched
     }
     fetchData();
   }, []);
+
   return (
     <div className="viewer-container">
       <h2 className="viewer-title">3D Models</h2>
-      {models.map((model) => (
-        <div className="model-wrapper" key={model._id}>
-          <Canvas style={{ height: "400px" }}>
-            <ambientLight />
-            <directionalLight position={[0, 0, 5]} />
-            <OrbitControls />
-            <Environment preset="sunset" />
-            <ModelItem url={`http://localhost:5000/${model.filepath}`} />
-          </Canvas>
-        </div>
-      ))}
+
+      {loading ? (
+        <div className="loading-container">Loading models...</div>
+      ) : models.length === 0 ? (
+        <div className="empty-container">No models available.</div>
+      ) : (
+        models.map((model) => (
+          <div className="model-wrapper" key={model._id}>
+            <Canvas style={{ height: "400px" }}>
+              <ambientLight />
+              <directionalLight position={[0, 0, 5]} />
+              <OrbitControls />
+              <Environment preset="sunset" />
+              <ModelItem url={`http://localhost:5000/${model.filepath}`} />
+            </Canvas>
+          </div>
+        ))
+      )}
     </div>
   );
 };
+
 
 export default Viewer;
