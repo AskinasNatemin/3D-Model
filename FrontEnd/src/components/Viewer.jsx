@@ -17,13 +17,13 @@ const ModelItem = ({ url }) => {
 
 const Viewer = () => {
   const [models, setModels] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     async function fetchData() {
       const res = await getModels();
       setModels(res.data);
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false); 
     }
     fetchData();
   }, []);
