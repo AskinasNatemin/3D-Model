@@ -1,0 +1,38 @@
+.viewer-container {
+    padding: 2rem;
+    background-color: #1e293b;
+    height: 90vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  .viewer-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #f8fafc;
+    text-align: center;
+    border-bottom: 2px solid #475569;
+    padding-bottom: 0.5rem;
+  }
+  
+  .model-wrapper {
+    background: #0f172a;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 900px;
+    transition: transform 0.3s ease;
+  }
+  
+  .model-wrapper:hover {
+    transform: scale(1.01);
+  }
+  
+  canvas {
+    border-radius: 10px;
+    background-color: #111827;
+  }
+  
