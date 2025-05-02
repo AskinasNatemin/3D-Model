@@ -37,7 +37,7 @@ const Viewer = () => {
       ) : models.length === 0 ? (
         <div className="empty-container">No models available.</div>
       ) : (
-        models.map((model) => (
+        models.length>0 && models.map((model) => (
           <div className="model-wrapper" key={model._id}>
             <Canvas style={{ height: "400px" }}>
               <ambientLight />
