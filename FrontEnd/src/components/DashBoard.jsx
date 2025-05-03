@@ -5,7 +5,7 @@ import { uploadModel } from "../../api";
 const DashBoard = () => {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const fileInputRef = useRef(null); // Ref to clear the input
+  const fileInputRef = useRef(null); 
 
   const handleUpload = async () => {
     if (!file) return alert("Please select a file");
@@ -56,5 +56,4 @@ const DashBoard = () => {
     </div>
   );
 };
-
 export default DashBoard;
