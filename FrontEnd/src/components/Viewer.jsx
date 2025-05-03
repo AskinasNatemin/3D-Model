@@ -18,6 +18,8 @@ const ModelItem = ({ url }) => {
 const Viewer = () => {
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true); 
+  const API_BASE = import.meta.env.VITE_SERVER_APP_URL;  
+
 
   useEffect(() => {
     async function fetchData() {
@@ -44,7 +46,7 @@ const Viewer = () => {
               <directionalLight position={[0, 0, 5]} />
               <OrbitControls />
               <Environment preset="sunset" />
-              <ModelItem url={`${import.meta.env.VITE_API_URL}/${model.filepath}`} />
+              <ModelItem url={`${API_BASE}/${model.filepath}`} />
               </Canvas>
           </div>
         ))
