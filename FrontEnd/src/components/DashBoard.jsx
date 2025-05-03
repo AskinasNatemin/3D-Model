@@ -7,13 +7,26 @@ const DashBoard = () => {
 
   const handleUpload = async () => {
     if (!file) return alert("Please select a file");
+  
+    const allowedExtension = ".glb";
+    const fileName = file.name.toLowerCase();
+  
+    if (!fileName.endsWith(allowedExtension)) {
+      return alert("Only .glb files are allowed");
+    }
+  
     const formData = new FormData();
-
     formData.append("model", file);
-    await uploadModel(formData);
-    alert("Model uploaded!");
+  
+    try {
+      await uploadModel(formData); 
+      alert("Model uploaded!");
+    } catch (error) {
+      console.error("Upload failed:", error);
+      alert("Upload failed. Please try again.");
+    }
   };
-
+  
   return (
     <div className="dashboard-container">
       <div className="card">

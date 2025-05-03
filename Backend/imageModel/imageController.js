@@ -11,16 +11,22 @@ export const upload = multer({ storage });
 
 export const addModel = async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({ error: "Only .glb files are allowed" });
+    }
+
     const newModel = new imageSchema({
       filename: req.file.filename,
       filepath: req.file.path,
     });
+
     await newModel.save();
     res.status(201).json(newModel);
   } catch (error) {
     res.status(500).json({ error: "Upload failed", details: error.message });
   }
 };
+
 
 export const getAllModels = async (req, res) => {
   try {
