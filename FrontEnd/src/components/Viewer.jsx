@@ -44,8 +44,8 @@ const Viewer = () => {
               <directionalLight position={[0, 0, 5]} />
               <OrbitControls />
               <Environment preset="sunset" />
-              <ModelItem url={`http://localhost:5000/${model.filepath}`} />
-            </Canvas>
+              <ModelItem url={`${import.meta.env.VITE_API_URL}/${model.filepath}`} />
+              </Canvas>
           </div>
         ))
       )}
